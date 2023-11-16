@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Definindo a codificação e o título da página -->
+  <meta charset="UTF-8" />
+  <title>F & R Arquiv</title>
+  <!-- Importando a fonte Raleway do Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:200" />
+  <!-- Importando scripts necessários para manipulação de documentos e PDFs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+  <!-- Importando o arquivo de estilo CSS -->
+  <link rel="stylesheet" href="./style.css" />
+  <!-- Adicionando um ícone à aba do navegador -->
+  <link rel="shortcut icon" href="imagens/download-file.png">
+</head>
+
+<body>
+  <!-- Container principal -->
+  <div class="all">
+    <!-- Botão para recarregar a página -->
+    <div class="left button-container" id="reloadButtonContainer">
+      <span class="text image-button" id="reloadButton">Carregar Novo Arquivo</span>
+    </div>
+    <!-- Área central -->
+    <div class="center">
+      <!-- Botão HOME -->
+      <div class="explainer"><span>HOME</span></div>
+      <!-- Botão para selecionar arquivo -->
+      <div class="button-container" id="fileInputButtonContainer">
+        <span class="text image-button" id="uploadButton"> Selecionar Arquivo
+        </span>
+      </div>
+      <!-- Input oculto para seleção de arquivo -->
+      <input type="file" id="fileInput" accept=".pdf, .doc, .docx, .txt" style="display: none;">
+    </div>
+    <!-- Botão para visualizar o arquivo -->
+    <div class="right button-container" id="viewButtonContainer">
+      <span class="text image-button" id="viewButton"> Visualizar Arquivo
+      </span>
+    </div>
+  </div>
+
+  <!-- Informações do arquivo selecionado -->
+  <div class="file-info" id="fileInfo" style="display: none;">
+    <p><strong>Arquivo selecionado:</strong> <span id="fileName"></span></p>
+  </div>
+
+  <!-- Áreas para exibir o conteúdo do arquivo -->
+  <div id="fileContent"></div>
+  <div id="textContent"></div>
+  <div id="pdfViewerContainer"></div>
+
+  <!-- Botões de controle para leitura de texto -->
+  <div id="controlButtons" style="display: none;">
+    <button id="speakButton"></button>
+    <button id="pauseButton"></button>
+    <button id="continueButton"></button>
+  </div>
+
+  <!-- Controles de volume e velocidade de leitura -->
+  <div id="volumeButtons" style="display: none;">
+    <div class="volume-bar">
+      <a class="volume-icon"></a>
+      <input type="range" id="volumeRange" class="range-input" min="0" max="1" step="0.1" value="1">
+    </div>
+    <div class="speed-bar">
+      <a class="speed-icon"></a>
+      <input type="range" id="rateRange" class="range-input" min="0.5" max="2" step="0.1" value="1">
+    </div>
+  </div>
+
+  <!-- Botões na parte inferior para baixar o arquivo em diferentes formatos -->
+  <div id="bottomButtons" style="display: none;">
+    <div class="format-selection">
+      <select id="downloadFormat">
+        <option value="pdf">PDF</option>
+        <option value="docx">Word (docx)</option>
+        <option value="txt">TXT</option>
+      </select>
+    </div>
+    <div><button id="downloadButton"></button></div>
+    <button id="pdfDownloadButton" style="display: block">Baixar PDF</button>
+    <button id="wordDownloadButton" style="display: block">Baixar Word</button>
+    <button id="txtDownloadButton" style="display: block">Baixar TXT</button>
+  </div>
+
+  <!-- Importando o script JavaScript -->
+  <script src="script.js"></script>
+</body>
+
+</html>
